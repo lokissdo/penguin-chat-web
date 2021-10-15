@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web chat nè </title>
+    <link rel="stylesheet" href="dinhkieu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+</head>
+
+<body>
+    <div class="parent__hello">
+        <div class="hello">
+            <span class="text--hello"> WELCOME TO MY WEBCHAT</span>
+            <i class="far fa-smile-beam  icon__welcome">
+            </i>
+        </div>
+    </div>
+    <div class="container">
+        <div class="con__left">
+            <STRONG>ROOM CHAT</STRONG>
+        <div class="Room__count--user"></div>
+        </div>
+        <ul id="messages"></ul>
+        
+        <div class="con__right">
+            <div class="conr__intro">Author's web <br>Newbie scholar: Lokiss</div>
+            <img class="avt" src="https://i1.sndcdn.com/avatars-000243204782-ii9a4n-t500x500.jpg" alt="" />
+            <video controls autoplay loop>
+                <source src="vid.mp4" type="video/mp4" />
+              </video>
+        </div>
+    </div>
+  
+    <form id="form" action="">
+        <input id="input" autocomplete="off" /><button>Send</button>
+    </form>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="client.js">
+        
+    </script>
+
+</body>
+
+</html>
