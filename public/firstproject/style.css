@@ -1,0 +1,89 @@
+body
+{
+    background-image: url(https://phunugioi.com/wp-content/uploads/2020/02/mau-background-dep.jpg);
+   height: 718px;
+}
+
+*
+{
+    margin:0;
+    box-sizing: border-box;
+}
+#namegame
+{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+display: flex;
+ justify-content: center;
+ flex-direction: column;
+ align-items: center;
+
+}
+#start
+{
+    font-family:'Times New Roman', Times, serif;
+    font-size: 30px;
+    font-weight: 1rem;
+    border-radius: 10px;
+    border:2px solid yellow;
+    width: 130px;
+    padding: 5px;
+    color: #d05d4b;
+    transition: all .35s ease-in;
+    margin-top: 10px;
+}
+#start:hover
+{
+    width: 150px;
+    margin-top: 5px;
+    cursor: grab;
+    font-size: 40px;
+    font-weight: 100px;
+    background-color: antiquewhite;
+}
+#mycanvas
+{
+ position: relative;
+ top:0;
+}
+#try
+{
+    position: relative;
+    font-size: 30%;
+    font-weight: 30%;
+    left:200px;
+    display: inline-block;
+}
+.hello
+{
+    font-size: 4em;
+    text-align: center;
+    animation:change ease 5s infinite ;
+}
+@keyframes change
+{
+    0%
+    {
+        color: rgb(243, 179, 96);
+    }
+    20%
+    {
+        color: #d05d4b;
+    }
+    40%
+    {
+        color: #b6d04b;
+    }
+    60%
+    {
+        color: #4bd0c4;
+    }
+    80%
+    {
+        color: #4d4bd0;
+    }
+    100%
+    {
+        color:#d04bc6;
+    }
+    
+}

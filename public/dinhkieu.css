@@ -66,27 +66,39 @@ li {
      width: 100vw;
      background-image: url("https://hoaidoan.vn/wp-content/uploads/2021/03/background-dep-5.png");
  }
- 
+ :root
+    {
+        --width-hello:-20vw;
+    }
+ @media screen and (max-width: 500px) {
+    :root
+    {
+        --width-hello:-50vw;
+    }
+   }
  .hello {
      display: flex;
-     align-items: flex-start;
      position: relative;
      border-radius: 20px;
-     width: 20vw;
-     padding: 0px 10px;
+     padding: 0px 5px;
      color: rgb(27, 15, 3);
      text-align: center;
      background-color: rgb(45, 236, 179);
-     animation: runani 20s linear infinite;
-     left: -40vw;
+     animation: runani 20s linear infinite;  
+     height: 40px;
+     width: calc(var(--width-hello)*(-1));
  }
  
  @keyframes runani {
+     from
+     { 
+         left: var(--width-hello);
+     }
      to {
-         left: 140vw;
+         left: 100vw;
      }
  }
- 
+
  .icon__welcome {
      color: rgb(235, 235, 45);
      align-self: center;
@@ -95,7 +107,8 @@ li {
  .text--hello {
      margin-left: 20px;
      margin-right: 10px;
-    
+    display: flex;
+    align-items: center;
  }
 .chat__user--name
 {
@@ -105,6 +118,7 @@ li {
     margin:0px;
     padding: 0px 5px;
     text-align: center;
+    font-size: smaller;
 }
 .container--chat
 {
@@ -123,11 +137,15 @@ li {
 .container
 {
     display: flex;
-    margin-top: 40px;
+    margin-top: 65px;
 }
 .conr__intro
 {
     margin: 0px 10px;
+    color: rgb(129, 127, 255);
+    
+    font-size: 0.9rem;
+    font-weight: 600;
 }
 video {
     background-color: rgb(240, 229, 215);
@@ -149,10 +167,14 @@ video {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 .con__right
-{
+{ 
+    display: flex;
+    flex-direction: column-reverse;
+    margin-bottom: 50px;
     max-width: 30vw;
     min-width: min-content;
     justify-content: flex-start;
+   
 
 }
 .chat__content
@@ -162,11 +184,26 @@ video {
     width: inherit;
     color: rgb(9 27 235);
 }
-.con
+
+.con__left
 {
-
+    position: fixed;
+    top: 40px;
     display: flex;
-    flex-direction: column-reverse;
-    margin-bottom: 50px;
-
+    max-height: 20vw;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.game
+{
+    margin: 0px 5px;
+    text-decoration: none;
+}
+.game:hover
+{
+  cursor: grab;
+}
+.icongame
+{
+    height: 20px;
 }

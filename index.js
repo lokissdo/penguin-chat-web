@@ -20,6 +20,12 @@ arrIcons.push("crow");
 arrIcons.push("dragon");
 arrIcons.push("cat");
 var arr = [];
+var bestscore=0;
+var  bestplayer="chủ game";
+app.get('/flappycanhcut',(req,res)=>
+{
+    res.sendFile(__dirname + '/chimflap.html')
+})
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
@@ -27,8 +33,8 @@ app.get('/', (req, res) => {
 // emit message to all users
 io.on('connection', (socket) => {
         // Set { <socket.id> }
-        socket.join("room1");
-        console.log(socket.rooms); // Set { <socket.id>, "room1" }
+        // socket.join("room1");
+        // console.log(socket.rooms); // Set { <socket.id>, "room1" }
     socket.on('chat message', (key) => {
         io.emit('chat message', key);
     });
@@ -49,7 +55,15 @@ io.on('connection', (socket) => {
         },{count:io.engine.clientsCount})
         if (posArrI == arrIcons.length - 1) posArrI = 0;
         else posArrI++;
+    
     })
+    socket.on('request best-score',()=>{
+        console.log("đã nghe");
+        io.emit('best-score',{bestscore,bestplayer});
+    })
+    socket.on("guinness",({highestScore,username})=>{
+        bestscore=highestScore;
+         bestplayer=username});
 });
 
 server.listen(process.env.PORT||3000, () => {
