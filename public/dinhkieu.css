@@ -2,7 +2,6 @@
      margin: 0;
      padding-bottom: 3rem;
      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
- 
     }
  
  #form {
@@ -142,6 +141,7 @@ video {
     width: 20vw;
     height: 30vh;
   display: block;
+  margin: 0px;
 }
 
 .Room__count--user
@@ -150,10 +150,10 @@ video {
 }
 .con__right
 {
-    display:flex;
-    flex-direction: column;
     max-width: 30vw;
     min-width: min-content;
+    justify-content: flex-start;
+
 }
 .chat__content
 {
@@ -161,4 +161,12 @@ video {
     margin: 0px;
     width: inherit;
     color: rgb(9 27 235);
+}
+.con
+{
+
+    display: flex;
+    flex-direction: column-reverse;
+    margin-bottom: 50px;
+
 }
