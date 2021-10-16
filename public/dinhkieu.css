@@ -193,11 +193,15 @@ video {
     max-height: 20vw;
     justify-content: flex-start;
     align-items: flex-start;
+    background-color:rgba(255, 255, 255, 0.8);
 }
 .game
 {
     margin: 0px 5px;
     text-decoration: none;
+    color: #b02727;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
 }
 .game:hover
 {
