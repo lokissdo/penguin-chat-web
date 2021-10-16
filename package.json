@@ -15,5 +15,13 @@
   "license": "ISC",
   "engines": {
     "node": "14.17.5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DoKhaiHung/mywebchat.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DoKhaiHung/mywebchat/issues"
+  },
+  "homepage": "https://github.com/DoKhaiHung/mywebchat#readme"
 }
