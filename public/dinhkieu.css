@@ -158,7 +158,7 @@ video {
 .chat__content
 {
    word-wrap: break-word;
-    font-weight:500 ;
     margin: 0px;
     width: inherit;
+    color: rgb(9 27 235);
 }
