@@ -44,6 +44,7 @@
      margin: 0;
      padding: 0;
      flex:1;
+    
  }
  
 li {
@@ -143,9 +144,37 @@ li {
 {
     margin: 0px 10px;
     color: rgb(129, 127, 255);
-    
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     font-weight: 600;
+    animation:change ease 5s infinite ;
+}
+@keyframes change
+{
+    0%
+    {
+        color: rgb(243, 179, 96);
+    }
+    20%
+    {
+        color: #d05d4b;
+    }
+    40%
+    {
+        color: #b6d04b;
+    }
+    60%
+    {
+        color: #4bd0c4;
+    }
+    80%
+    {
+        color: #4d4bd0;
+    }
+    100%
+    {
+        color:#d04bc6;
+    }
+    
 }
 video {
     background-color: rgb(240, 229, 215);

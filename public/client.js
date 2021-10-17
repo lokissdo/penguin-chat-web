@@ -3,7 +3,9 @@ var socket = io();
         var form = document.getElementById('form');
         var input = document.getElementById('input');
         var tagCountUser=document.getElementsByClassName('Room__count--user')[0];
+    
         var user = {};
+     
         user.name = prompt("Nhap ten cua ban");
         if (!user.name) user.name = "người ẩn danh"
             /// fake participation
@@ -26,6 +28,8 @@ var socket = io();
             item.classList.add('container--chat')        
             item.innerHTML = `<div class="con__chat--icon"> <i class="fas fa-${key.icon}  chat--icon"></i></div> <div class="con__chat--user"><h3 class="chat__user--name"> ${key.name}</div></h3> <span class="chat__content"> - ${key.message} </span>`;
             messages.appendChild(item);
+            window.scrollTo(0,document.body.scrollHeight);
+            
            
         });
         /// log user being out
@@ -34,6 +38,8 @@ var socket = io();
                 item.innerHTML = `${key.name}  da thoat`;
                 tagCountUser.innerText=count;
                 messages.appendChild(item);
+                window.scrollTo(0,document.body.scrollHeight);
+                
             })
             /// notify new user and assign new user's id
         socket.on('join', (res,{count}) => {
@@ -48,4 +54,7 @@ var socket = io();
             item.innerHTML = `${res.name} da vao room`;
             tagCountUser.innerText=`${count}`;
             messages.appendChild(item);
+            window.scrollTo(0,document.body.scrollHeight);
+            
+            
         })
