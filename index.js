@@ -6,6 +6,8 @@ const { Server } = require("socket.io");
 const io = new Server(server);
 const path = require('path')
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 var arrIcons = [];
 var posArrI = 0;
 arrIcons.push("dog");
@@ -26,15 +28,21 @@ app.get('/flappycanhcut',(req,res)=>
 {
     res.sendFile(__dirname + '/chimflap.html')
 })
+app.post('/guinness',(req,res)=>
+{
+     bestscore=req.body.highestScore;
+     bestplayer=req.body.username;    
+})
+app.get('/input',(req,res)=>
+{
+    res.send({bestscore,bestplayer});
+})
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 //setInterval(()=>{console.log(io.engine.clientsCount)},3000);
 // emit message to all users
 io.on('connection', (socket) => {
-        // Set { <socket.id> }
-        // socket.join("room1");
-        // console.log(socket.rooms); // Set { <socket.id>, "room1" }
     socket.on('chat message', (key) => {
         io.emit('chat message', key);
     });
@@ -61,9 +69,10 @@ io.on('connection', (socket) => {
         console.log("đã nghe");
         io.emit('best-score',{bestscore,bestplayer});
     })
-    socket.on("guinness",({highestScore,username})=>{
-        bestscore=highestScore;
-         bestplayer=username});
+    // không cần real-tỉme
+    // socket.on("guinness",({highestScore,username})=>{
+    //     bestscore=highestScore;
+    //      bestplayer=username});
 });
 
 server.listen(process.env.PORT||3000, () => {

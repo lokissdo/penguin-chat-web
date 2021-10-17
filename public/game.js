@@ -12,13 +12,17 @@ background.src='firstproject/back.jpg';
 poleImg.src="firstproject/pole.jpg"
 poleBot.src="firstproject/polebot.jpg"
 var a=[]; var tracerFront=0; let score=0; var check=false; var highestScore=0;var bird={};
-var socket = io();
 var bestscore;
 var kylucda="";
-socket.emit("request best-score");
-socket.on("best-score",(key)=>{bestscore=key.bestscore;
-kylucda=key.bestplayer;
-})
+fetch('/input', {
+    method: 'GET',
+  })
+    .then(response => response.json())
+    .then(data => {
+      // get the response from the server GET request
+      bestscore=data.bestscore;
+      kylucda=data.bestplayer;   
+  });
 function POLES(){
     this.x=500;
     this. daiTop= 300;
@@ -92,27 +96,32 @@ if (!checkLose())   isFinish=true;
          setTimeout(()=>{
              if (window.confirm(` Your score in this turn is ${score}           
          DO YOU WANNA PLAY AGAIN?
-         Click OK to try again
-               Cancel to see your highest score 
+               OK to try again
+               CANCEL to see your highest score 
           `))
         AgainGame();
         else  
         {
             
-           if(bestscore >= highestScore)  alert(` Your highest score is ${highestScore}, sắp phá kỷ lục rồi, better luck next time `)
+           if(bestscore >= highestScore)  alert(` Your highest score is ${highestScore}, better luck next time `)
            else 
            {        
                 alert(` Your highest score is ${highestScore}, phá kỷ lục rồi!. Bạn là nhất, nhất bạn rồi `) ; 
                 var username= prompt('Nhập lên kỷ lục da');
-                socket.emit("guinness",{highestScore,username});          
-                alert(` Thanks, chơi lại để see ur name `) ; 
-        }}
+               // socket.emit("guinness",{highestScore,username}); 
+               // emit hơi thừa vì ko cần real-time
+               fetch('/guinness', {
+                method: 'POST',
+                body: JSON.stringify({highestScore,username}),
+                headers: {
+                    'Content-Type': 'application/json',
+                  },
+              });
+              alert(` Thanks, chơi lại để see ur name `) ; 
+            };  
+                
+        }
         },200);  
-        
-        //  erase.innerHTML=` DO YOU WANT PLAY AGAIN?
-        //  <button id="try" onclick="AgainGame()">
-        //     TRY AGAIN
-        //  </button> ` 
  }
 }
 function StartGame()
