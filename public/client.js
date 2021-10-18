@@ -26,7 +26,7 @@ var socket = io();
         socket.on('chat message', function(key) {
             var item = document.createElement('li'); 
             item.classList.add('container--chat')        
-            item.innerHTML = `<div class="con__chat--icon"> <i class="fas fa-${key.icon}  chat--icon"></i></div> <div class="con__chat--user"><h3 class="chat__user--name"> ${key.name}</div></h3> <span class="chat__content"> - ${key.message} </span>`;
+            item.innerHTML = `<div class="con__chat--icon"> <img src="${key.icon}.png" class=" chat--icon"></div> <div class="con__chat--user"><h3 class="chat__user--name"> ${key.name}</div></h3> <span class="chat__content"> - ${key.message} </span>`;
             messages.appendChild(item);
             window.scrollTo(0,document.body.scrollHeight);
             
