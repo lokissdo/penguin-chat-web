@@ -79,17 +79,25 @@ li {
    }
  .hello {
      display: flex;
-     position: relative;
-     border-radius: 20px;
+     position: relative; 
      padding: 0px 5px;
      color: rgb(27, 15, 3);
      text-align: center;
-     background-color: rgb(45, 236, 179);
+     background: 
+     linear-gradient(rgb(252, 252, 252),rgb(255, 255, 255)) padding-box ,
+
+    linear-gradient(to bottom right, #b827fc 0%, #2c90fc 25%, #b8fd33 50%, #fec837 75%, #fd1892 100%) border-box;
      animation: runani 20s linear infinite;  
-     height: 40px;
+     height: 34px;
      width: calc(var(--width-hello)*(-1));
+     border: 3px solid transparent;
+     border-radius: 20px;
+   
+    
+     
+    
  }
- 
+
  @keyframes runani {
      from
      { 
@@ -110,6 +118,8 @@ li {
      margin-right: 10px;
     display: flex;
     align-items: center;
+    animation:change ease-in-out 6s infinite ;
+    line-height: 1.2rem;
  }
 .chat__user--name
 {
@@ -131,10 +141,11 @@ li {
 
 .chat--icon
 {
-    color: darkorchid;
+   
     width: 25px;
     height: 25px;
     border-radius: 20px;
+    background-color:whitesmoke ;
     
 }
 .container
@@ -154,27 +165,27 @@ li {
 {
     0%
     {
-        color: rgb(243, 179, 96);
+        color: #ff2200;
     }
     20%
     {
-        color: #d05d4b;
+        color: rgb(252, 143, 0);
     }
     40%
     {
-        color: #b6d04b;
+        color: #ceff08;
     }
     60%
     {
-        color: #4bd0c4;
+        color: #00ffea;
     }
     80%
     {
-        color: #4d4bd0;
+        color: #0400ff;
     }
     100%
     {
-        color:#d04bc6;
+        color:#ff00ea;
     }
     
 }

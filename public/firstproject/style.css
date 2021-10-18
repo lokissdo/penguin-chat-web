@@ -63,11 +63,11 @@ display: flex;
 {
     0%
     {
-        color: rgb(243, 179, 96);
+        color: #d05d4b;
     }
     20%
     {
-        color: #d05d4b;
+        color: rgb(243, 179, 96);
     }
     40%
     {
