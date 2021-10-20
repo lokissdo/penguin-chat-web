@@ -1,3 +1,4 @@
+
 var erase=document.getElementById("namegame")
 var canvas;
 var context;
@@ -107,7 +108,7 @@ if (!checkLose())   isFinish=true;
            else 
            {        
                 alert(` Your highest score is ${highestScore}, phá kỷ lục rồi!. Bạn là nhất, nhất bạn rồi `) ; 
-                var username= prompt('Nhập lên kỷ lục da');
+                const username= prompt('Nhập lên kỷ lục da');
                // socket.emit("guinness",{highestScore,username}); 
                // emit hơi thừa vì ko cần real-time
                fetch('/guinness', {

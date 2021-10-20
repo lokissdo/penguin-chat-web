@@ -1,78 +1,44 @@
+(function(){
 const express = require('express');
 const app = express();
-const http = require('http');
-const server = http.createServer(app);
+const server = require('http').createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
 const path = require('path')
+const sockett=require('./router/sockett.js')
+const infor=require('./models/infor')
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+const db=require('./router/connect.js');
+db.connect();
 var arrIcons = [];
-var posArrI = 0;
-arrIcons.push("koala");
-arrIcons.push("whale");
-arrIcons.push("pig");
-arrIcons.push("fox");
-arrIcons.push("chicken");
-arrIcons.push("tiger");
-arrIcons.push("crab");
-arrIcons.push("cow");
-arrIcons.push("hedgehog");
 var arr = [];
-var bestscore=0;
-var  bestplayer="chủ game";
+var posArrI = 0;
+require('./router/resource').init(arrIcons)
 app.get('/flappycanhcut',(req,res)=>
 {
     res.sendFile(__dirname + '/chimflap.html')
 })
-app.post('/guinness',(req,res)=>
-{
-     bestscore=req.body.highestScore;
-     bestplayer=req.body.username;    
-})
 app.get('/input',(req,res)=>
 {
-    res.send({bestscore,bestplayer});
+    infor.find({})
+     .then(key=>{
+    res.send({bestscore:key[key.length-1].score,
+              bestplayer:key[key.length-1].name});
+               })
+})
+app.post('/guinness',(req,res)=>
+{
+    const newGuiness=new infor({name:req.body.username,score:req.body.highestScore})
+    newGuiness.save();
+    
 })
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
-//setInterval(()=>{console.log(io.engine.clientsCount)},3000);
-// emit message to all users
-io.on('connection', (socket) => {
-    socket.on('chat message', (key) => {
-        io.emit('chat message', key);
-    });
-    socket.on('disconnect', () => {
-            var res = arr.find(e => e.id === socket.id);
-            io.emit('out', res,{count:io.engine.clientsCount})
-        })
-        /// push new user after assign id
-    socket.on('push', (key) => {
-            arr.push(key)
-
-        })
-        /// recall join to assign socket.id to new user
-    socket.on('fakejoin', (name) => {
-        io.emit('join', {
-            name: name,
-            icon: arrIcons[posArrI]
-        },{count:io.engine.clientsCount})
-        if (posArrI == arrIcons.length - 1) posArrI = 0;
-        else posArrI++;
-    
-    })
-    socket.on('request best-score',()=>{
-        console.log("đã nghe");
-        io.emit('best-score',{bestscore,bestplayer});
-    })
-    // không cần real-tỉme
-    // socket.on("guinness",({highestScore,username})=>{
-    //     bestscore=highestScore;
-    //      bestplayer=username});
-});
-
+sockett(io,arr,posArrI,arrIcons);
 server.listen(process.env.PORT||3000, () => {
     console.log('listening on *: http://localhost:3000');
 });
+})()
