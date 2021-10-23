@@ -11,7 +11,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 const db=require('./router/connect.js');
-const envi=process.env.MONGODB_URI;
+const envi=process.env.MONGODB_URI||'mongodb://localhost:27017/data';
 db.connect(envi);
 var arrIcons = [];
 var arr = [];
