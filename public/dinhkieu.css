@@ -58,7 +58,11 @@ li {
  #messages>li:nth-child(even) {
     background: #e3eff8;
 }
- 
+.container
+{
+    display: flex;
+    margin-top: 65px;
+}
  .parent__hello {
     position: fixed;
      overflow: hidden;
@@ -71,10 +75,22 @@ li {
     {
         --width-hello:-20vw;
     }
- @media screen and (max-width: 500px) {
+
+ @media screen and (max-width: 650px) {
     :root
     {
         --width-hello:-50vw;
+    }
+   }
+   @media screen and (max-width: 300px) {
+    :root
+    {
+        --width-hello:-65vw;
+        
+    }
+    .container
+    {
+     margin-top: 85px;
     }
    }
  .hello {
@@ -148,11 +164,7 @@ li {
     background-color:whitesmoke ;
     
 }
-.container
-{
-    display: flex;
-    margin-top: 65px;
-}
+
 .conr__intro
 {
     margin: 0px 10px;

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web chat nè </title>
+    <link rel="icon" href="icon/icongame.jpg" type="image/.jpg">
+    <link rel="stylesheet" href="dinhkieu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+</head>
+
+<body>
+    <div class="parent__hello">
+        <div class="hello">
+            <span class="text--hello"> WELCOME TO MY WEBCHAT</span>
+            <i class="far fa-smile-beam  icon__welcome">
+            </i>
+        </div>
+    </div>
+    <div class="con con__left">
+        <a href="/flappycanhcut" class="game" >Game chim cánh bẹt
+        <img src="icon/icongame.jpg" class="icongame"></a>
+          <STRONG>PEOPLE IN ROOM :</STRONG>
+          <div class="Room__count--user"></div>
+       </div>
+    <div class="container">
+        <ul id="messages"></ul>
+       
+           <div class="con con__right">
+            <video controls  >
+                <source src="vid.mp4" type="video/mp4" />
+            </video>
+            <img class="avt" src="https://i1.sndcdn.com/avatars-000243204782-ii9a4n-t500x500.jpg" alt="" />
+               <div class="conr__intro">Author : Lokiss</div>
+             </div>
+
+    </div>
+  
+    <form id="form" action="">
+        <input id="input" autocomplete="off" /><button>Send</button>
+    </form>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="web.js">
+        
+    </script>
+</body>
+
+</html>

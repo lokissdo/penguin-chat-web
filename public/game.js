@@ -8,10 +8,10 @@ var poleImg=new Image()
 var poleBot=new Image()
 var background=new Image()
 var isFinish=false;
-penguin.src='firstproject/image.jpg';
-background.src='firstproject/back.jpg';
-poleImg.src="firstproject/pole.jpg"
-poleBot.src="firstproject/polebot.jpg"
+penguin.src='game/image.jpg';
+background.src='game/back.jpg';
+poleImg.src="game/pole.jpg"
+poleBot.src="game/polebot.jpg"
 var a=[]; var tracerFront=0; let score=0; var check=false; var highestScore=0;var bird={};
 var bestscore;
 var kylucda="";
@@ -107,20 +107,20 @@ if (!checkLose())   isFinish=true;
            if(bestscore >= highestScore)  alert(` Your highest score is ${highestScore}, better luck next time `)
            else 
            {        
-                alert(` Your highest score is ${highestScore}, phá kỷ lục rồi!. Bạn là nhất, nhất bạn rồi `) ; 
-                const username= prompt('Nhập lên kỷ lục da');
+                alert(` Your highest score is ${highestScore}, phá kỷ lục rồi!. Bạn là nhất, nhất bạn rồi. 
+                         Chơi lại để thấy tên bạn! `) ; 
                // socket.emit("guinness",{highestScore,username}); 
                // emit hơi thừa vì ko cần real-time
                fetch('/guinness', {
                 method: 'POST',
-                body: JSON.stringify({highestScore,username}),
+                body: JSON.stringify({highestScore}),
                 headers: {
                     'Content-Type': 'application/json',
                   },
               });
-              alert(` Thanks, chơi lại để see ur name `) ; 
+
             };  
-                
+          location.reload();   
         }
         },200);  
  }
