@@ -4,7 +4,7 @@ db.connect(envi);
 const mongoose=require('mongoose')
 const infor=require('../models/infor');
 const User=require('../models/user.js');
-const bcrypt=require('bcrypt');
+const bcrypt=require('bcryptjs');
 const jwt=require('jsonwebtoken')
 var namePath=__dirname;
 const pathWeb=namePath.slice(0,namePath.length-7)
