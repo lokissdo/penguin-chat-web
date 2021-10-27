@@ -1,5 +1,4 @@
-function init(arrIcons)
-{
+function init(arrIcons) {
     arrIcons.push("koala");
     arrIcons.push("whale");
     arrIcons.push("pig");
@@ -10,4 +9,5 @@ function init(arrIcons)
     arrIcons.push("cow");
     arrIcons.push("hedgehog");
 }
-module.exports={init}
+
+module.exports = { init };
